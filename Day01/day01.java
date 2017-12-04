@@ -2,10 +2,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+
 public class day01 {
 
     public static void main(String[] args) {
-
         
         String result = "";
         int total = 0;
