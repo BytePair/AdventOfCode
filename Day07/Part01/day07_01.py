@@ -33,7 +33,7 @@ def read_input(filename):
 
 
 def get_depth(program, program_dict):
-    if (program.programs) == []:
+    if (program.programs == []):
         return 0
     else:
         depth = 0
