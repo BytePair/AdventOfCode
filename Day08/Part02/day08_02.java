@@ -5,13 +5,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class day08_01 {
+public class day08_02 {
 
 
     public static void main(String[] args) {
 
 
         HashMap<String, Integer> registers = new HashMap<String, Integer>();
+        Integer largestOverallRegister = Integer.MIN_VALUE;
         
         try {
 
@@ -36,6 +37,7 @@ public class day08_01 {
                         registers.put(splitLine[0], registers.get(splitLine[0]) - Integer.parseInt(splitLine[2]));
                     }
                     // System.out.println(" = " + String.valueOf(registers.get(splitLine[0])));
+                    if (registers.get(splitLine[0]) > largestOverallRegister) largestOverallRegister = registers.get(splitLine[0]);
                 };
 
                 // get next line
@@ -49,15 +51,16 @@ public class day08_01 {
         }
 
         // find the largest register
-        Integer largestRegister = Integer.MIN_VALUE;
+        Integer largestCurrentRegister = Integer.MIN_VALUE;
         for (Map.Entry<String, Integer> entry : registers.entrySet()) {
-            if (entry.getValue() > largestRegister) {
-                largestRegister = entry.getValue();
+            if (entry.getValue() > largestCurrentRegister) {
+                largestCurrentRegister = entry.getValue();
             }
         }
 
-        // print result
-        System.out.println("Largest Register Currently: " + String.valueOf(largestRegister));
+        // print results
+        System.out.println("Largest Register Overall: " + String.valueOf(largestOverallRegister));
+        System.out.println("Largest Register Currently: " + String.valueOf(largestCurrentRegister));
 
     }
 
