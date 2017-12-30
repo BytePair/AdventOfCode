@@ -50,16 +50,22 @@ if __name__ == "__main__":
     # then set all registers to initial value of 0
     registers = set_up_registers(instructions)
 
+    # keep track of largest value
+    largestEver = None
+
     # perform all the instructions
     for instruction in instructions:
         perform_instruction(instruction, registers)
+        if (largestEver == None or registers[instruction.reg1] > largestEver):
+            largestEver = registers[instruction.reg1]
 
     # find the largest register
-    largest = None
+    largestCurrent = None
     for k,v in registers.items():
         # print("Value:", v)
-        if largest == None or v > largest:
-            largest = v
+        if largestCurrent == None or v > largestCurrent:
+            largestCurrent = v
 
-    # print largest register value
-    print("Largest Register Value:", largest)
+    # print largest register values
+    print("Largest Register Value Ever:", largestEver)
+    print("Largest Register Value Currently:", largestCurrent)
